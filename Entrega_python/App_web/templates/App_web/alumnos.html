@@ -1,0 +1,19 @@
+{% extends 'App_web/header.html' %}
+
+{% load static %}
+
+{% block contenidoPagina %}
+
+<form action = "" method = "POST"> {% csrf_token %}
+
+    <table>
+
+        {{ FormularioAlumno.as_table }}
+
+    </table>
+
+    <input type="submit", value = "Enviar">
+
+</form>
+
+{% endblock %}

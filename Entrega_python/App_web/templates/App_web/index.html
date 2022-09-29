@@ -1,0 +1,108 @@
+{% extends 'App_web/header.html' %}
+
+{% load static %}
+
+{% block contenidoPagina %}
+
+   
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>MATERIAS DISPONIBLES</h2>
+            <p>Buscar Materias:
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="materias" id="" min="0">
+            
+                    <input type="submit" value="Buscar">
+                </form>
+            </p>
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Comision</th>
+                      </tr>
+                </thead>
+                 
+                
+                <tbody>
+                    {% if materiasBusqueda == null%}
+                    {% for materia in materias %}
+                    <tr>
+                       <td>{{materia.nombre}}</td>
+                       <td>{{materia.comision}}</td>
+                    </tr>
+                    {% endfor %}
+                    {%else%}
+                    {% for resultado in materiasBusqueda %}
+                    <tr>
+                       <td>{{resultado.nombre}}</td>
+                       <td>{{resultado.comision}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+ </div>
+
+
+ <div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>PROFESORES</h2>
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                      </tr>
+                </thead>
+                 
+                
+                <tbody>
+
+                    
+                    {% for profesor in profesores %}
+                    <tr>
+                       <td>{{profesor.nombre}}</td>
+                       <td>{{profesor.apellido}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+ </div>
+
+
+ <div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>ALUMNOS</h2>
+            <table class="table">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Carerra</th>
+                      </tr>
+                </thead>
+                <tbody>
+                    {% for alumno in alumnos %}
+                    <tr>
+                       <td>{{alumno.nombre}}</td>
+                       <td>{{alumno.apellido}}</td>
+                       <td>{{alumno.carrera}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+ </div>
+
+
+{% endblock %}
